@@ -61,8 +61,8 @@ public class PhysComp extends JComponent{
 	static final String[] instructions =
 		{"Left click to move charge, right click to move dipole.",
 		 "Use up and down to grow/shrink the separation distance.",
-		 "Use left and right to decrease/increase the precision of estimation.",
-		 "Use A and S to decrease/increase the speed of the simulation.",
+		 "Use left and right to decrease/increase the speed of the simulation.",
+		 "Use A and S to decrease/increase the precision of estimation.",
 		 "Have fun! *_*"};
 			
 	float instruct_timer_max = 350;
@@ -106,25 +106,25 @@ public class PhysComp extends JComponent{
 					dipole_sep*=1.2;
 				if (e.getKeyCode()==KeyEvent.VK_DOWN)
 					dipole_sep/=1.2;
-				if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-					updates_per_frame*=2;
-					attribute_timer=attribute_timer_max;
-					attribute=attribute_type.ITERATIONS;
-				}
-				if (e.getKeyCode()==KeyEvent.VK_LEFT&&updates_per_frame>2) {
-					updates_per_frame/=2;
-					attribute_timer=attribute_timer_max;
-					attribute=attribute_type.ITERATIONS;
-				}
-				if (e.getKeyCode()==KeyEvent.VK_A){
+				if (e.getKeyCode()==KeyEvent.VK_LEFT){
 					time_dilation/=1.2;
 					attribute_timer=attribute_timer_max;
 					attribute=attribute_type.SIMULATION_SPEED;
 				}
-				if (e.getKeyCode()==KeyEvent.VK_S){
+				if (e.getKeyCode()==KeyEvent.VK_RIGHT){
 					time_dilation*=1.2;
 					attribute_timer=attribute_timer_max;
 					attribute=attribute_type.SIMULATION_SPEED;
+				}
+				if (e.getKeyCode()==KeyEvent.VK_S) {
+					updates_per_frame*=2;
+					attribute_timer=attribute_timer_max;
+					attribute=attribute_type.ITERATIONS;
+				}
+				if (e.getKeyCode()==KeyEvent.VK_A&&updates_per_frame>2) {
+					updates_per_frame/=2;
+					attribute_timer=attribute_timer_max;
+					attribute=attribute_type.ITERATIONS;
 				}
 			}
 
